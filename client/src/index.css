@@ -5,3 +5,7 @@
 body{
   background-color: #fff;
 }
+
+.section {
+  @apply p-3 max-w-[900px] flex-1 flex-grow mx-auto my-0 text-black;
+}
