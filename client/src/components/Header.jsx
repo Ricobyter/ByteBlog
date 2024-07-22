@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 export default function header() {
   return (
-    <section className='section'>
+    <section className='section w-full'>
 
     
     <header className="flex justify-between w-[100%]">
@@ -15,8 +15,8 @@ export default function header() {
       <Link to = '/login' className="hover:text-gray-700 transition-all">
         Login
       </Link>
-      <Link to='/register' className="hover:text-gray-700 transition-all">
-        Register
+      <Link to ='/profile'>
+      Profile
       </Link>
     </nav>
     <hr className="text-gray-400 bg-gray-600 mt-2" />
