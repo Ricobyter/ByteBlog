@@ -1,34 +1,42 @@
 import React from 'react'
 import { FaUserCircle } from "react-icons/fa";
-
+import { GoHeart } from "react-icons/go";
+import { FaRegCommentAlt } from "react-icons/fa";
 export default function Post() {
   return (
-    <section className='section'>
-    <div className="mt-10 flex flex-col md:flex-row h-[350px] md:h-[300px] w-full p-2 shadow-lg shadow-black rounded-md justify-between">
-    <div className="h-full md:w-1/2">
-      <img
-        src="https://www.livemint.com/lm-img/img/2024/07/08/600x338/2-1_1720408341185_1720408352762.png"
-        alt=""
-        className="w-full h-full object-cover"
-      />
-    </div>
+<div className='post flex  w-[720px]  mt-10 border-b-2 pb-6'>
+  <div className='w-4/6'>
 
-    <div className="flex flex-grow flex-col md:w-1/2 p-4">
-      <h2 className="text-lg  md:text-xl font-bold">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem
-        perferendis reiciendis dolores.
-      </h2>
-      <div className="flex gap-2 items-center mt-2">
-        <FaUserCircle size={28} />
-        <p className="text-gray-700">Rico</p>
-      </div>
-      <p className="hidden md:block mt-4 line-clamp-1 ">
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officiis
-        quasi aspernatur esse deserunt id accusantium laborum consequuntur,
-        deleniti obcaecati illum, debitis tempora a voluptatibus maiores.
-      </p>
-    </div>
+  <div className='flex  items-center gap-2'>
+    <FaUserCircle size="16"/>
+    <h1 className='text-md '>Authorname in Category</h1>
   </div>
-  </section>
+
+  <div className='mt-2'>
+    <h1 className='text-3xl font-lora font-semibold mb-1'>Lorem, ipsum dolor sit amet conse adipisicing elit.</h1>
+    <p className='text-lg text-lora text-gray-500'>Lorem ipsum dolor sit amet consectetur.</p>
+  </div>
+
+  <div className='flex justify-between items-center px-4 mt-6'>
+    <p >July 27</p>
+    <div className='flex items-center gap-2'>
+      <GoHeart />
+      <p>654</p>
+    </div>
+    <div className='flex items-center gap-2'>
+    <FaRegCommentAlt />
+    <p>65</p>
+    </div>
+    
+  </div>
+
+  </div>
+  <div className='w-2/6 flex justify-end items-center'>
+    <img src="https://miro.medium.com/v2/resize:fit:828/format:webp/0*vGinfeZbE4XU0Et3" alt="" className='w-2/3 h-2/3 bg-cover '/>
+  </div>
+<div>
+
+</div>
+</div>
   )
 }
