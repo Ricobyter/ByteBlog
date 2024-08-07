@@ -2,7 +2,7 @@ import React from "react";
 
 function RecommendedTopics() {
   return (
-    <div className="max-w-300 mb-8">
+    <div className="max-w-[300px] mb-8">
       <h1 className="text-2xl font-medium font-platypi pb-2">
         Recommended Topics
       </h1>

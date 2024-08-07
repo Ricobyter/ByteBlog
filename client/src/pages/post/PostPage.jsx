@@ -1,7 +1,9 @@
 import React from 'react'
+
 import PostHeader from '../../components/post/PostHeader'
 import Header from '../../components/Header'
 import PostContent from '../../components/post/PostContent'
+import PostFooter from '../../components/post/PostFooter'
 
 const PostPage = () => {
   return (
@@ -10,6 +12,10 @@ const PostPage = () => {
 
       <PostHeader />
       <PostContent />
+      <div className='w-full flex justify-center items-center bg-gray-100 mt-12'>
+        <PostFooter/>
+
+      </div>
     </div>
   )
 }
