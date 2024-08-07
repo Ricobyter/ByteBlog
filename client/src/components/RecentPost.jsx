@@ -1,5 +1,6 @@
 import React from 'react'
 import ChooseCategory from './ChooseCategory'
+import RecommendedTopics from './RecommendedTopics'
 
 const RecentPost = () => {
   return (
@@ -60,6 +61,7 @@ const RecentPost = () => {
 
         </div>
         <ChooseCategory />
+        <RecommendedTopics/>
          
     </div>
   )

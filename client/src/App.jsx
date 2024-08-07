@@ -5,6 +5,7 @@ import Login from "./pages/Login";
 import UserProfile from "./pages/user/UserProfile";
 import UserSecurity from "./pages/user/UserSecurity";
 import UserWorks from "./pages/user/UserWorks";
+import PostPage from "./pages/post/PostPage";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
   <Route path="/profile" element={<UserProfile />} />
   <Route path="/usersecurity" element={<UserSecurity />} />
   <Route path="/userworks" element={<UserWorks />} />
+  <Route path="/postpage" element={<PostPage />} />
 </Routes>
 </BrowserRouter>
   );

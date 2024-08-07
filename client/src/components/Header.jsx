@@ -2,14 +2,18 @@ import React from 'react'
 import { FaSearch } from "react-icons/fa";
 import { FaPenToSquare } from "react-icons/fa6";
 import { FaUserCircle } from "react-icons/fa";
+import { useNavigate } from 'react-router-dom';
 
-export default function header() {
+export default function Header() {
+  const navigate = useNavigate()
   return (
 <header className='px-6 py-2 flex justify-between w-full'>
   <div className='flex gap-8 items-center justify-center'>
+    <div onClick={()=> navigate("/")}>
   <h1 className='text-3xl font-bold font-platypi'>BLOGHUB</h1>
+    </div>
 
-  <div className='flex gap-2 items-center w-[18rem] bg-gray-100 rounded-xl px-2 py-1'>
+  <div className='flex gap-2 items-center w-[18rem] bg-gray-100 rounded-2xl px-3 py-1'>
   <FaSearch color='black' size='16' className='font-extralight'/>
     <input type='text' placeholder='Search' className='outline-none bg-transparent text-gray-700 font-light'/>
   </div>
@@ -17,8 +21,8 @@ export default function header() {
 
   <div className='font-lora flex gap-8 justify-center items-center'>
     <div className='flex gap-2 text-gray-700 hover:text-gray-800 items-center text-lg font-lora cursor-pointer'>
-    <FaPenToSquare size="14"/>
-    <p className='font-light text-md'>Write</p>
+    <FaPenToSquare size="18" className='font-light'/>
+    <p className='font-lora'>Write</p>
     </div>
 
 <div>

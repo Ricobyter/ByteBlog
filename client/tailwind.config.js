@@ -8,7 +8,8 @@ export default {
     extend: {
       fontFamily:{
         lora : ["Lora", "serif"],
-        platypi: ["Platypi", "serif"]
+        platypi: ["Platypi", "serif"],
+        rubik: ["Rubik", "sans-serif"]
       }
     },
   },

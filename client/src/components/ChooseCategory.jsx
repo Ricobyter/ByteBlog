@@ -7,34 +7,52 @@ const ChooseCategory = () => {
         <hr  className='mb-4'/>
 
         {/* Authors  */}
-     <div className='flex gap-4 flex-wrap items-center mb-4'>
+     <div className='flex gap-2  mb-4'>
+      <div>
         <img src="https://png.pngtree.com/png-vector/20190710/ourmid/pngtree-user-vector-avatar-png-image_1541962.jpg" alt="" className='h-[55px] w-[55px] rounded-full'/>
+      </div>
         
-        <div>
+        <div className='ml-2'>
             <h1 className='font-platypi'>Author name </h1>
-            <p className='line-clamp-2'>Author bio Lorem, ipsum dolor.</p>
-            <button className='text-blue-600'>+ Follow</button>
+            <p className='line-clamp-2 text-xs'>Author bio Lorem, Lorem ipsum dolor sit. .</p>
+        </div>
+        <div>
+
+            <button className='border-2 text-sm text-black rounded-2xl px-2 py-1 border-black'>Follow</button>
         </div>
 
      </div>
-     <div className='flex gap-4 flex-wrap items-center mb-4'>
+     <div className='flex gap-2 mt-2  mb-4'>
+      <div>
         <img src="https://png.pngtree.com/png-vector/20190710/ourmid/pngtree-user-vector-avatar-png-image_1541962.jpg" alt="" className='h-[55px] w-[55px] rounded-full'/>
+      </div>
         
-        <div>
+        <div className='ml-2 '>
             <h1 className='font-platypi'>Author name </h1>
-            <button className='text-blue-600'>+ Follow</button>
+            <p className='line-clamp-2 text-xs'>Author bio Lorem, Lorem ipsum dolor sit. .</p>
+        </div>
+        <div>
+
+            <button className='border-2 text-sm text-black rounded-2xl px-2 py-1 border-black'>Follow</button>
         </div>
 
      </div>
-     <div className='flex gap-4 flex-wrap items-center mb-4'>
+     <div className='flex gap-2  mb-4'>
+      <div>
         <img src="https://png.pngtree.com/png-vector/20190710/ourmid/pngtree-user-vector-avatar-png-image_1541962.jpg" alt="" className='h-[55px] w-[55px] rounded-full'/>
+      </div>
         
-        <div>
+        <div className='ml-2'>
             <h1 className='font-platypi'>Author name </h1>
-            <button className='text-blue-600'>+ Follow</button>
+            <p className='line-clamp-2 text-xs'>Author bio Lorem, Lorem ipsum dolor sit. .</p>
+        </div>
+        <div>
+
+            <button className='border-2 text-sm text-black rounded-2xl px-2 py-1 border-black'>Follow</button>
         </div>
 
      </div>
+
     </div>
   )
 }
