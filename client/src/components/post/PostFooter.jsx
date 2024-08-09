@@ -1,5 +1,7 @@
 import React from "react";
 import { LuMailPlus } from "react-icons/lu";
+import MoreAuthorPost from "./MoreAuthorPost";
+import MorePosts from "./MorePosts";
 const PostFooter = () => {
   return (
     <div className="w-[800px] bg-transparent py-24">
@@ -32,10 +34,13 @@ const PostFooter = () => {
             <p> Authro's Bio Lorem, ipsum dolor.</p>
         </div>
 
-        <hr  className="mt-8"/>
       </div>
 
       {/* More from Author  */}
+      <div className="w-[800px]">
+        <MoreAuthorPost />
+        <MorePosts />
+      </div>
       
     </div>
   );

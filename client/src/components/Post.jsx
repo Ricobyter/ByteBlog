@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 export default function Post() {
   const navigate = useNavigate()
   return (
-<div className='post flex  w-[720px]  mt-10 border-b-2 pb-6' onClick={()=> navigate('postpage')}>
+<div className='post flex  w-[720px]  mt-10 border-b-2 pb-6 cursor-pointer' onClick={()=> navigate('postpage')}>
   <div className='w-4/6'>
 
   <div className='flex  items-center gap-2'>

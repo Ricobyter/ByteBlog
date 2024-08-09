@@ -14,7 +14,7 @@ const PostPage = () => {
       <PostContent />
       <div className='w-full flex justify-center items-center bg-gray-100 mt-12'>
         <PostFooter/>
-
+        
       </div>
     </div>
   )

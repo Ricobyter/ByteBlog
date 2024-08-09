@@ -9,7 +9,7 @@ export default function Header() {
   return (
 <header className='px-6 py-2 flex justify-between w-full'>
   <div className='flex gap-8 items-center justify-center'>
-    <div onClick={()=> navigate("/")}>
+    <div className='cursor-pointer' onClick={()=> navigate("/")}>
   <h1 className='text-3xl font-bold font-platypi'>BLOGHUB</h1>
     </div>
 
