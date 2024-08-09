@@ -21,20 +21,20 @@ export const loginUser = createAsyncThunk('user/loginUser', async (userData) => 
   return response.data;
 });
 
-export const logoutUser = createAsyncThunk('user/logoutUser', async () => {
-  await axios.post('/api/users/logout');
-  return;
-});
+// export const logoutUser = createAsyncThunk('user/logoutUser', async () => {
+//   await axios.post('/api/users/logout');
+//   return;
+// });
 
-export const getUser = createAsyncThunk('user/getUser', async () => {
-  const response = await axios.get('/api/users/me');
-  return response.data;
-});
+// export const getUser = createAsyncThunk('user/getUser', async () => {
+//   const response = await axios.get('/api/users/me');
+//   return response.data;
+// });
 
-export const loginStatus = createAsyncThunk('user/loginStatus', async () => {
-  const response = await axios.get('/api/users/status');
-  return response.data;
-});
+// export const loginStatus = createAsyncThunk('user/loginStatus', async () => {
+//   const response = await axios.get('/api/users/status');
+//   return response.data;
+// });
 
 // Slice
 const userSlice = createSlice({
@@ -71,25 +71,25 @@ const userSlice = createSlice({
         state.status = 'failed';
         state.error = action.error.message;
       })
-      .addCase(logoutUser.fulfilled, (state) => {
-        state.user = null;
-        state.token = null;
-      })
-      .addCase(getUser.pending, (state) => {
-        state.status = 'loading';
-      })
-      .addCase(getUser.fulfilled, (state, action) => {
-        state.status = 'succeeded';
-        state.user = action.payload;
-      })
-      .addCase(getUser.rejected, (state, action) => {
-        state.status = 'failed';
-        state.error = action.error.message;
-      })
-      .addCase(loginStatus.fulfilled, (state, action) => {
-        state.status = 'succeeded';
-        state.isLoggedIn = action.payload;
-      });
+    //   .addCase(logoutUser.fulfilled, (state) => {
+    //     state.user = null;
+    //     state.token = null;
+    //   })
+    //   .addCase(getUser.pending, (state) => {
+    //     state.status = 'loading';
+    //   })
+    //   .addCase(getUser.fulfilled, (state, action) => {
+    //     state.status = 'succeeded';
+    //     state.user = action.payload;
+    //   })
+    //   .addCase(getUser.rejected, (state, action) => {
+    //     state.status = 'failed';
+    //     state.error = action.error.message;
+    //   })
+    //   .addCase(loginStatus.fulfilled, (state, action) => {
+    //     state.status = 'succeeded';
+    //     state.isLoggedIn = action.payload;
+    //   });
   },
 });
 

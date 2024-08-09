@@ -1,15 +1,32 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
-const postSchema = new mongoose.Schema({
-  title: { type: String, required: true },
-  content: { type: String, required: true },
-  author: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
-  createdAt: { type: Date, default: Date.now },
-  updatedAt: { type: Date, default: Date.now },
-  views: { type: Number, default: 0 },
-  image: { type: String } // New field for image URL
+const postSchema = new mongoose.Schema(
+  {
+    title: { type: String, required: true },
+    content: { type: String, required: true },
+    author: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
+    created_at: { type: Date, default: Date.now }, // Explicitly added field
+    updated_at: { type: Date, default: Date.now }, // Explicitly added field
+    views: { type: Number, default: 0 },
+    image: { type: String },
+    comment_total: { type: Number, default: 0 },
+    likes: { type: Number, default: 0 },
+  },
+  { timestamps: false }
+); // Disable automatic timestamps
+
+// Ensure `updated_at` is updated automatically
+postSchema.pre("save", function (next) {
+  if (this.isModified()) {
+    this.updated_at = Date.now();
+  }
+  next();
 });
 
-const Post = mongoose.model('Post', postSchema);
+const Post = mongoose.model("Post", postSchema);
 
-module.exports = Post; 
+module.exports = Post;
