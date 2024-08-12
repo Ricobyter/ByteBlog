@@ -2,12 +2,12 @@ const User = require("../models/userModel");
 const asyncHandler = require("express-async-handler");
 var parser = require("ua-parser-js");
 const { generateToken } = require("../utils");
+const bcrypt = require('bcryptjs')
 const Token = require("../models/tokenModel");
 
 const registerUser = asyncHandler(async (req, res) => {
   const { name, email, password } = req.body;
 
-  //?Validation
   if (!name || !email || !password) {
     res.status(400);
     throw new Error("Please fill all the fields");

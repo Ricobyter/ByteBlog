@@ -4,7 +4,7 @@ import MoreAuthorPost from "./MoreAuthorPost";
 import MorePosts from "./MorePosts";
 const PostFooter = () => {
   return (
-    <div className="w-[800px] bg-transparent py-24">
+    <div className="w-[750px] bg-transparent py-24">
       <div className="flex flex-col w-full">
         <div className="ml-2">
           <img

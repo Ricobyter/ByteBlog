@@ -1,10 +1,52 @@
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { GoHeart } from "react-icons/go";
 import { FaRegCommentAlt } from "react-icons/fa";
+import gsap from 'gsap';
+import PostComments from "./PostComments";
 
 const PostHeader = () => {
+  const [showComments, setShowComments] = useState(false);
+  const commentsRef = useRef(null);
+
+  const toggleComments = () => {
+    setShowComments(prev => !prev);
+  };
+
+  useEffect(() => {
+    const commentsSection = commentsRef.current;
+
+    if (showComments) {
+      gsap.set(commentsSection, { display: "block" });
+      gsap.fromTo(
+        commentsSection,
+        { width: 0 },
+        { width: "380px", duration: 0.4, ease: "power3.out" }
+      );
+    } else {
+      gsap.to(commentsSection, {
+        width: 0,
+        duration: 0.4,
+        ease: "power3.in",
+        onComplete: () => gsap.set(commentsSection, { display: "none" }) // Set display to none after animation
+      });
+    }
+  }, [showComments]);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (commentsRef.current && !commentsRef.current.contains(event.target) && !event.target.closest('.fa-reg-comment-alt')) {
+        setShowComments(false); // Close the comments section
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
   return (
-    <div className="max-w-[800px] flex flex-col">
+    <div className="relative max-w-[800px] flex flex-col">
       <div className="flex-col">
         <h1 className="text-5xl font-semibold font-rubik">
           Title Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -14,7 +56,7 @@ const PostHeader = () => {
           Lorem ipsum dolor sit amet consectetur.
         </p>
 
-        <div className="flex mt-8  font-lora gap-6 items-center">
+        <div className="flex mt-8 font-lora gap-6 items-center">
           <img
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSppkoKsaYMuIoNLDH7O8ePOacLPG1mKXtEng&s"
             alt=""
@@ -43,17 +85,25 @@ const PostHeader = () => {
         <hr />
         <div className="flex mt-2 mb-2">
           <div className="flex text-gray-500">
-            <GoHeart size="22" className="" />
-            <p className="ml-2 ">Likes</p>
+            <GoHeart size="22" />
+            <p className="ml-2">Likes</p>
           </div>
 
-          <div className="ml-12 flex text-gray-500 items-center">
-            <FaRegCommentAlt size="18" className=" font-light" />
+          <div className="ml-12 flex text-gray-500 items-center cursor-pointer" onClick={toggleComments}>
+            <FaRegCommentAlt size="18" className="font-light" />
             <p className="ml-2">Comments</p>
           </div>
         </div>
         <hr />
       </div>
+      {showComments && (
+        <div
+          ref={commentsRef}
+          className="fixed top-0 right-0 h-full bg-white border-l border-gray-300 overflow-auto comment-section"
+        >
+          <PostComments onClose={() => setShowComments(false)} />
+        </div>
+      )}
     </div>
   );
 };

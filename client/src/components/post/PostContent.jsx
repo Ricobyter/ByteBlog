@@ -3,7 +3,7 @@ import React from 'react'
 
 const PostContent = () => {
   return (
-    <div className='max-w-[800px] flex flex-col mt-8'>
+    <div className='max-w-[750px] flex flex-col mt-8'>
 
 <img src="https://images.pexels.com/photos/27514094/pexels-photo-27514094/free-photo-of-two-red-smiley-faces-on-a-subway-train.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" className='w-full ' />
 
