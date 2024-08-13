@@ -10,6 +10,8 @@ const app = express();
 
 //? routes
 const userRoute = require("./routes/userRoutes")
+const postRoute = require("./routes/postRoutes")
+const commentRoute = require("./routes/commentRoutes")
 
 app.use(express.json())
 app.use(express.urlencoded({extended:false}))
@@ -25,6 +27,8 @@ app.use(
 
 //?route setting
 app.use("/api/users", userRoute)
+app.use("/api/post", postRoute)
+app.use("/api/comment", commentRoute)
 // app.use("/api/post", userRoute)
 
 const PORT = process.env.PORT || 5000;

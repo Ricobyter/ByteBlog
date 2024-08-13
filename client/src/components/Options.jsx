@@ -19,7 +19,7 @@ const Options = () => {
         </button>
       </Link>
 
-      <Link to='/write'>
+      <Link to='/createpost'>
         <button className="flex items-center text-gray-700 py-1 px-2 w-full text-left cursor-pointer hover:bg-gray-100 rounded-md">
           <FaEdit className="mr-2 text-lg" />
           Write

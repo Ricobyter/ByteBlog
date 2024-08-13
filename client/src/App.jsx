@@ -11,6 +11,7 @@ import store from "./store/store.js";
 import { Provider } from "react-redux";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import CreatePost from "./pages/CreatePost.jsx";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/userworks" element={<UserWorks />} />
           <Route path="/postpage" element={<PostPage />} />
           <Route path="/userbookmarks" element={<UserBookmarks />} />
+          <Route path="/createpost" element={<CreatePost />} />
         </Routes>
         <ToastContainer position="top-right" autoClose={5000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
       </BrowserRouter>
