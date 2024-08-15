@@ -74,7 +74,7 @@ export default function Header() {
             <div
               ref={optionsRef}
               className="absolute right-[145px] top-4/5 transform -translate-x-2 translate-y-1 bg-white mt-2 shadow-lg rounded-md"
-              style={{ width: `${userCircleRef.current?.offsetWidth}px` }} // Match the width of the icon
+              style={{ width: userCircleRef.current ? `${userCircleRef.current.offsetWidth}px` : 'auto' }} // Default to 'auto' if the ref is not available
             >
               <Options />
             </div>

@@ -13,7 +13,7 @@ function App() {
 
       <div>
       <Category/>
-     <Post/>
+     <Post id = "66bbb1574408ad7e9224cfe9"/>
       </div>
 <RecentPost />
       </div>

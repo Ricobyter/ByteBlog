@@ -202,6 +202,19 @@ const getUser = asyncHandler(async (req, res) => {
     throw new Error("User not found");
   }
 });
+//? Get user
+const getUserById = asyncHandler(async (req, res) => {
+  const { userId } = req.params;
+  const user = await User.findById(userId);
+
+  if (user) {
+    res.status(200).json(user);
+  } else {
+    res.status(404);
+    throw new Error("User not found");
+  }
+});
+
 
 module.exports = {
   registerUser,
@@ -209,4 +222,5 @@ module.exports = {
   logoutUser,
   loginStatus,
   getUser,
+  getUserById
 };

@@ -3,10 +3,22 @@ import { GoHeart } from "react-icons/go";
 import { FaRegCommentAlt } from "react-icons/fa";
 import gsap from 'gsap';
 import PostComments from "./PostComments";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import { getPost } from "../../store/postSlice";
 
-const PostHeader = () => {
+const PostHeader = ({title, description, category, authorname, authorImage, published}) => {
   const [showComments, setShowComments] = useState(false);
   const commentsRef = useRef(null);
+
+  const { id } = useParams();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getPost(id));
+  }, [dispatch, id]);
+
+  const { isPostLoading, postTitle, postImage, postDescription, postContent } = useSelector((state) => state.posts);
 
   const toggleComments = () => {
     setShowComments(prev => !prev);
@@ -15,20 +27,22 @@ const PostHeader = () => {
   useEffect(() => {
     const commentsSection = commentsRef.current;
 
-    if (showComments) {
-      gsap.set(commentsSection, { display: "block" });
-      gsap.fromTo(
-        commentsSection,
-        { width: 0 },
-        { width: "380px", duration: 0.4, ease: "power3.out" }
-      );
-    } else {
-      gsap.to(commentsSection, {
-        width: 0,
-        duration: 0.4,
-        ease: "power3.in",
-        onComplete: () => gsap.set(commentsSection, { display: "none" }) // Set display to none after animation
-      });
+    if (commentsSection) {
+      if (showComments) {
+        gsap.set(commentsSection, { display: "block" });
+        gsap.fromTo(
+          commentsSection,
+          { width: 0 },
+          { width: "370px", duration: 0.4, ease: "power3.out" }
+        );
+      } else {
+        gsap.to(commentsSection, {
+          width: 0,
+          duration: 0.4,
+          ease: "power3.in",
+          onComplete: () => gsap.set(commentsSection, { display: "none" }) // Set display to none after animation
+        });
+      }
     }
   }, [showComments]);
 
@@ -46,25 +60,25 @@ const PostHeader = () => {
   }, []);
 
   return (
-    <div className="relative max-w-[800px] flex flex-col">
+    <div className="relative w-[750px] flex flex-col">
       <div className="flex-col">
         <h1 className="text-5xl font-semibold font-rubik">
-          Title Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          {title}
         </h1>
 
         <p className="text-2xl font-semibold font-lora text-gray-600 mt-4">
-          Lorem ipsum dolor sit amet consectetur.
+          {description}
         </p>
 
         <div className="flex mt-8 font-lora gap-6 items-center">
           <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSppkoKsaYMuIoNLDH7O8ePOacLPG1mKXtEng&s"
+            src={authorImage}
             alt=""
             className="h-[45px] w-[45px] rounded-full bg-cover"
           />
           <div className="flex flex-col">
             <p className="font-lora text-gray-700 font-medium">
-              Author name{" "}
+              {authorname}
               <span>
                 <button className="text-blue-600 font-lora ml-4 text-md">
                   Follow
@@ -73,9 +87,9 @@ const PostHeader = () => {
             </p>
             <div className="flex text-xs mb-2">
               <p className="text-xs text-gray-600">
-                Published in yada Yada Category
+                Published in {category}
               </p>
-              <p className="ml-6 text-gray-700">22 July 2023</p>
+              <p className="ml-6 text-gray-700">{published}</p>
             </div>
           </div>
         </div>

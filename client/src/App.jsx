@@ -24,7 +24,7 @@ function App() {
           <Route path="/profile" element={<UserProfile />} />
           <Route path="/usersecurity" element={<UserSecurity />} />
           <Route path="/userworks" element={<UserWorks />} />
-          <Route path="/postpage" element={<PostPage />} />
+          <Route path="/postpage/:id" element={<PostPage />} />
           <Route path="/userbookmarks" element={<UserBookmarks />} />
           <Route path="/createpost" element={<CreatePost />} />
         </Routes>
