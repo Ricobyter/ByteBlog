@@ -28,24 +28,23 @@ const createComment = asyncHandler(async (req, res) => {
 });
 
 const getCommentsByPostId = asyncHandler(async (req, res) => {
-  const { postId } = req.params; // Get postId from query parameters
+  const { postId } = req.body; 
 
-  // Validate postId
   if (!postId) {
     res.status(400);
     throw new Error('Post ID is required');
   }
 
   // Find comments associated with the postId
-  const comments = await Comment.find({ postId });
+  const comments = await Comment.find({ postId }) .populate('userId', 'name photo bio');
 
   // Check if comments were found
   if (comments.length > 0) {
     res.status(200).json(comments);
   } else {
-    res.status(404);
-    throw new Error('No comments found for this post');
+    res.status(200).json({message: 'No comment found'});
   }
+  // res.status(200).json(comments);
 });
 
 module.exports ={

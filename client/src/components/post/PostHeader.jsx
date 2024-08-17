@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getPost } from "../../store/postSlice";
 
-const PostHeader = ({title, description, category, authorname, authorImage, published}) => {
+const PostHeader = ({title, description, category, authorname, authorImage, published, postId}) => {
   const [showComments, setShowComments] = useState(false);
   const commentsRef = useRef(null);
 
@@ -115,7 +115,7 @@ const PostHeader = ({title, description, category, authorname, authorImage, publ
           ref={commentsRef}
           className="fixed top-0 right-0 h-full bg-white border-l border-gray-300 overflow-auto comment-section"
         >
-          <PostComments onClose={() => setShowComments(false)} />
+          <PostComments onClose={() => setShowComments(false)} postId={postId}/>
         </div>
       )}
     </div>

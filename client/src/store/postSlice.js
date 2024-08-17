@@ -46,6 +46,28 @@ export const getPost = createAsyncThunk(
   }
 );
 
+// Utility function to calculate time difference
+const timeAgo = (date) => {
+  const seconds = Math.floor((new Date() - new Date(date)) / 1000);
+
+  let interval = Math.floor(seconds / 31536000);
+  if (interval > 1) return `${interval} years ago`;
+
+  interval = Math.floor(seconds / 2592000);
+  if (interval > 1) return `${interval} months ago`;
+
+  interval = Math.floor(seconds / 86400);
+  if (interval >= 1) return `${interval} days ago`;
+
+  interval = Math.floor(seconds / 3600);
+  if (interval >= 1) return `${interval} hours ago`;
+
+  interval = Math.floor(seconds / 60);
+  if (interval >= 1) return `${interval} minutes ago`;
+
+  return `${Math.floor(seconds)} seconds ago`;
+};
+
 export const getAllPosts = createAsyncThunk(
   'posts/getAllPosts',
   async (_, thunkAPI) => {
@@ -96,14 +118,10 @@ const postSlice = createSlice({
         state.postImage = action.payload.image;
         state.postCategory = action.payload.category;
         state.postAuthorId = action.payload.author;
-        state.postDate = formatPostDate(action.payload.created_at)
+        state.postDate = timeAgo(action.payload.created_at)
         state.post = {
           ...action.payload,
-          created_at: new Date(action.payload.created_at).toLocaleDateString('en-GB', {
-            day: '2-digit',
-            month: 'short',
-            year: 'numeric',
-          }),
+          created_at: timeAgo(action.payload.created_at)
         };
       })
       .addCase(getPost.rejected, (state, action) => {

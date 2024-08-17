@@ -29,9 +29,13 @@ const getPostById = asyncHandler(async (req, res) => {
         throw new Error('Post ID is required');
     }
 
-    const post = await Post.findById(postId).populate('author', 'name photo');;
+    const post = await Post.findById(postId).populate('author', 'name photo bio');;
 
     if (post) {
+      post.views = (post.views || 0) + 1;
+
+      await post.save();
+
         res.status(200).json(post);
     } else {
         res.status(404);
@@ -56,9 +60,28 @@ const getAllPosts = asyncHandler(async (req, res) => {
     }
   });
 
+  const getAuthorPosts = asyncHandler(async (req, res) => {
+    const {authorId} = req.body;
+
+    if (!authorId) {
+        res.status(400);
+        throw new Error('Author ID is required');
+    }
+
+    const posts = await Post.find({author: authorId}).populate('author', 'name photo bio');
+
+    if (posts) {
+        res.status(200).json(posts);
+    } else {
+        res.status(404);
+        throw new Error('Posts not found');
+    }
+  });
+
 
 module.exports ={
     createPost,
     getPostById,
-    getAllPosts
+    getAllPosts,
+    getAuthorPosts
 }

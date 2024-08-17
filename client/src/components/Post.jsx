@@ -32,6 +32,7 @@ export default function Post({id}) {
     <div
       className="post flex  w-[720px]  mt-10 border-b-2 pb-6 cursor-pointer"
       onClick={() => navigate(`/postpage/${post._id}`)}
+      key={post._id}
     >
       <div className="w-4/6">
         <div className="flex  items-center gap-2">

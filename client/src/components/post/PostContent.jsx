@@ -2,8 +2,7 @@ import React from 'react';
 
 // Function to add Tailwind CSS classes to HTML tags
 const applyTailwindClasses = (htmlContent) => {
-    return htmlContent
-    .replace(/<p>/g, '<p class="text-lg font-light mb-2">')
+    return htmlContent.replace(/<p>/g, '<p class="text-lg font-light mb-2">')
     .replace(/<h1>/g, '<h1 class="text-4xl font-bold mb-1">')
     .replace(/<h2>/g, '<h2 class="text-3xl font-semibold mb-1">')
     .replace(/<h3>/g, '<h3 class="text-2xl font-semibold mb-1">')
